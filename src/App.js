@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators} from 'redux';
 import './App.css';
 
 import PostsIndex from './components/posts_index';
@@ -8,6 +10,8 @@ import PostNew from './components/post_new';
 import PostDetail from './components/post_detail';
 import PostEdit from './components/post_edit';
 import Header from './components/header';
+import { fetchPost } from './actions/actions_posts';
+
 
 class App extends Component {
 
@@ -21,7 +25,7 @@ class App extends Component {
             </div>
           )}
         />
-        <Route exact path='/post/:id/edit' render = {() => (
+        <Route exact path='/post/:id/edit' render={() => (
             <div>
               <Header />
               <PostEdit />
@@ -51,10 +55,15 @@ class App extends Component {
           </div>
           )}
         />
-
       </div>
     );
   }
 }
 
 export default App;
+
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators({ fetchPost: fetchPost }, dispatch)
+// }
+//
+// export default connect(null, mapDispatchToProps)(App);

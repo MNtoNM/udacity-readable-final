@@ -24,7 +24,7 @@ class PostsIndex extends Component {
   }
 
   renderPosts() {
-    const sortedPosts = _.orderBy(this.props.posts.posts, [this.state.sortBy], ['desc'])
+    const sortedPosts = _.orderBy(this.props.posts, [this.state.sortBy], ['desc'])
 
     return _.map(sortedPosts, post => (
       <PostRow key={post.id} {...post} />

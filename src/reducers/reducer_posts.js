@@ -4,9 +4,24 @@ import { RECEIVE_POSTS, RECEIVE_POSTVOTE, RECEIVE_POST } from '../actions/action
 export default function (state = {}, action) {
   switch (action.type) {
     case RECEIVE_POSTS:
-      return Object.assign({}, state, {
-        posts: action.posts.data
-      });
+      const posts = action.posts.data
+      return {
+        ...state,
+        ...posts
+      }
+    //   const postsArray = action.posts.data;
+    //   // Turn it into hashobjects for increased performance and easier handling
+    //   const posts = postsArray.reduce(
+    //   (map, obj) => {
+    //     map[obj.id] = obj;
+    //     return map;
+    //   },
+    //   {}
+    // );
+    // return {
+    //   ...state,
+    //   ...posts
+    // };
     case RECEIVE_POST:
     console.log("receive post action: ", action);
     return { ...state, [action.post.data.id]: action.post.data };

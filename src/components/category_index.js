@@ -18,12 +18,13 @@ class CategoryIndex extends Component {
   }
 
   render() {
+
     return (
       <div>
         <h3>Viewing Posts by Category</h3>
         <ul>
           {this.renderCategories() }
-          <span>| <Link to={'/'}>View All Posts</Link></span>
+          <span>| <Link to={`/`}>View All Posts</Link></span>
         </ul>
 
       </div>

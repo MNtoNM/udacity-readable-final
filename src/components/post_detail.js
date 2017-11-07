@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
-import { bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
-import { fetchPost } from '../actions/actions_posts';
 
 class PostDetail extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
 
   componentDidMount() {
     const { id } = this.props.match.params
     if (id) {
-      console.log("fetchPost happy path");
-      this.props.fetchPost(id)
+      console.log("fetchPost happy path", this);
     } else {
       console.log("post was not fetched.");
     }
@@ -35,8 +29,4 @@ function mapStateToProps({ posts }, ownProps) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchPost: fetchPost }, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(PostDetail);
+export default connect(mapStateToProps)(PostDetail);
