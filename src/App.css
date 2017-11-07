@@ -1,0 +1,47 @@
+.App {
+  margin: 0 auto;
+}
+
+.container {
+  width: 80%;
+}
+
+.fa {
+  font-size: 1.5em;
+}
+
+.vote-score {
+  font-size: 1.5em;
+  margin: 0 5px;
+}
+
+.comment-count {
+  font-size: 1.5em;
+
+}
+
+.fa-thumbs-up {
+  color: green;
+}
+
+.fa-thumbs-down {
+  color: red;
+}
+
+.fa-comments {
+  color: #000080;
+}
+
+.fa-edit {
+  color: #0077be;
+}
+
+.select-options {
+  margin-left: 110px;
+  margin-top: 10px;
+}
+
+.pseudo-link {
+  color: #0077be;
+  text-decoration: underline;
+}
