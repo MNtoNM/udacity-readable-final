@@ -24,7 +24,9 @@ export default function (state = {}, action) {
     // };
     case RECEIVE_POST:
     console.log("receive post action: ", action);
-    return { ...state, [action.post.data.id]: action.post.data };
+    // return { ...state, [action.post.data.id]: action.post.data };
+    const post = action.post.data
+    return {...state, ...post}
 
     case RECEIVE_POSTVOTE:
     // console.log("postvote action: ", action.post.data);

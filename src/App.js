@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { bindActionCreators} from 'redux';
+// import { bindActionCreators} from 'redux';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 
 import PostsIndex from './components/posts_index';
@@ -17,53 +18,50 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Route exact path='/posts/new' render={() => (
+      <BrowserRouter>
+        <div className="App">
+          <Route exact path='/posts/new' render={() => (
+              <div>
+                <Header />
+                <PostNew />
+              </div>
+            )}
+          />
+          <Route exact path='/post/:id/edit' render={() => (
+              <div>
+                <Header />
+                <PostEdit />
+              </div>
+            )}
+          />
+          <Route exact path="/post/:id" render={
+            (props) =>
             <div>
               <Header />
-              <PostNew />
+              <PostDetail post={this.props.fetchPost()} {...props} />
             </div>
-          )}
-        />
-        <Route exact path='/post/:id/edit' render={() => (
+          } />
+
+          <Route exact path='/' render={() => (
             <div>
               <Header />
-              <PostEdit />
+              <PostsIndex />
             </div>
-          )}
-        />
-        <Route exact path="/post/:id" render={
-          (props) =>
-          <div>
-            <Header />
-            <PostDetail {...props} />
-          </div>
-        } />
+            )}
+          />
 
-        <Route exact path='/' render={() => (
-          <div>
-            <Header />
-            <PostsIndex />
-          </div>
-          )}
-        />
+        <Route exact path='/:category/category/' render={() => (
+            <div>
+              <Header />
+              <CategoryIndex />
+            </div>
+            )}
+          />
+        </div>
+      </BrowserRouter>
 
-      <Route exact path='/:category/category/' render={() => (
-          <div>
-            <Header />
-            <CategoryIndex />
-          </div>
-          )}
-        />
-      </div>
     );
   }
 }
 
-export default App;
-
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({ fetchPost: fetchPost }, dispatch)
-// }
-//
-// export default connect(null, mapDispatchToProps)(App);
+export default connect(null, { fetchPost })(App);

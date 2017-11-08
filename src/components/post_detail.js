@@ -13,7 +13,7 @@ class PostDetail extends Component {
   }
 
   render() {
-    console.log("this.props.post from PostDetail: ", this.props.post);
+    console.log("this.props from PostDetail: ", this.props);
     return (
       <div>
         test
